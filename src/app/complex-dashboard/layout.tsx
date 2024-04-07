@@ -5,14 +5,18 @@ export default function DashboardLayout({
   users,
   revenue,
   notifications,
+  login,
 }: {
   children: ReactNode;
   users: ReactNode;
   revenue: ReactNode;
   notifications: ReactNode;
+  login: ReactNode;
 }) {
+  const isLoggedIn = false;
+
   // every layout slots can have its own loading, error state
-  return (
+  return isLoggedIn ? (
     <div>
       {/* complex-dashboard/@children/page.tsx */}
       <div>{children}</div>
@@ -24,5 +28,7 @@ export default function DashboardLayout({
         <div className="flex flex-1">{notifications}</div>
       </div>
     </div>
+  ) : (
+    login
   );
 }
